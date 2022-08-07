@@ -28,9 +28,7 @@ async function removeContact(contactId) {
 
 async function addContact(body) {
   const { name, email, phone } = body;
-  if (!name || !email || !phone) {
-    return null;
-  }
+
   const contacts = await listContacts();
   const newContact = { id: v4(), name, email, phone };
 
@@ -41,9 +39,7 @@ async function addContact(body) {
 
 async function updateContact(contactId, body) {
   const { name, email, phone } = body;
-  if (!name || !email || !phone) {
-    return null;
-  }
+
   const contacts = await listContacts();
 
   const idx = contacts.findIndex((contact) => contact.id === String(contactId));
