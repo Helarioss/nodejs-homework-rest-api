@@ -7,7 +7,7 @@ const { User } = require("../../models/users");
 const { SECRET_KEY } = process.env;
 
 const login = async (req, res) => {
-  const { email, password } = req.body;
+  const { email, password, avatarURL } = req.body;
 
   const user = await User.findOne({ email });
   if (!user) {
@@ -28,7 +28,8 @@ const login = async (req, res) => {
   res.json({
     token,
     user: {
-      email: user.email,
+      email,
+      avatarURL,
       subscription: user.subscription,
     },
   });
